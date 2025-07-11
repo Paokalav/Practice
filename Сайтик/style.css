@@ -1,0 +1,439 @@
+:root {
+    --primary: #3498db;
+    --secondary: #2ecc71;
+    --danger: #e74c3c;
+    --dark: #2c3e50;
+    --light: #ecf0f1;
+    --gray: #95a5a6;
+    --purple: #9b59b6;
+    --gold: #f1c40f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background: linear-gradient(135deg, var(--purple), var(--primary));
+    color: white;
+    padding: 1.5rem 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+@media (max-width: 900px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    padding: 30px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+.card h2 {
+    color: var(--dark);
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--light);
+    font-size: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--dark);
+    font-size: 1.05rem;
+}
+
+select, input, textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s;
+    background-color: #fafafa;
+}
+
+select:focus, input:focus, textarea:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    background-color: white;
+}
+
+.rating-container {
+    justify-content: center;
+}
+
+.rating-item {
+    min-width: 200px;
+}
+
+.rating-item:hover {
+    background: rgba(236, 240, 241, 0.9);
+    transform: scale(1.03);
+}
+
+.rating-item label {
+    display: block;
+    margin-bottom: 12px;
+    color: var(--dark);
+}
+
+.stars {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.star {
+    font-size: 26px;
+    cursor: pointer;
+    color: #ddd;
+    transition: all 0.2s;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.star.active {
+    color: var(--gold);
+    text-shadow: 0 1px 3px rgba(241, 196, 15, 0.4);
+}
+
+.submit-btn {
+    background: linear-gradient(to right, var(--primary), var(--purple));
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    width: 100%;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+    background: linear-gradient(to right, #2980b9, #8e44ad);
+}
+
+.filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.filters .form-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.teacher-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    padding: 25px;
+    margin-bottom: 25px;
+    transition: all 0.3s;
+    cursor: pointer;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.teacher-card:hover {
+    transform: translateX(8px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    border-color: rgba(155, 89, 182, 0.2);
+}
+
+.teacher-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--purple), var(--primary));
+}
+
+.teacher-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.teacher-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.teacher-discipline {
+    color: var(--gray);
+    font-style: italic;
+    margin-top: 5px;
+    font-size: 0.95rem;
+}
+
+.avg-rating {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--purple);
+    background: rgba(155, 89, 182, 0.1);
+    padding: 8px 20px;
+    border-radius: 30px;
+    min-width: 70px;
+    text-align: center;
+}
+
+
+.rating-detail {
+    text-align: center;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: all 0.3s;
+}
+
+.rating-detail:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.08);
+}
+
+.detail-value {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 5px;
+}
+
+.detail-label {
+    font-size: 0.9rem;
+    color: var(--gray);
+    font-weight: 500;
+}
+
+
+.review-item {
+    background: #f9f9f9;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-left: 5px solid var(--primary);
+    transition: all 0.3s;
+}
+
+.review-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.review-teacher {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--dark);
+}
+
+.review-discipline {
+    color: var(--purple);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-top: 5px;
+}
+
+.review-rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(52, 152, 219, 0.1);
+    padding: 8px 15px;
+    border-radius: 20px;
+}
+
+.review-rating-value {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+.review-comment {
+    margin: 15px 0;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+.toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 18px 30px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    z-index: 2000;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.4s;
+    font-size: 1.05rem;
+    max-width: 400px;
+}
+
+.toast.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.toast.success {
+    background: linear-gradient(to right, var(--secondary), #27ae60);
+}
+
+.toast.error {
+    background: linear-gradient(to right, var(--danger), #c0392b);
+}
+
+.no-reviews {
+    text-align: center;
+    padding: 30px;
+    color: var(--gray);
+    font-style: italic;
+    font-size: 1.1rem;
+}
+
+.teacher-reviews {
+    display: none;
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid #eee;
+}
+
+.teacher-reviews h3 {
+    margin-bottom: 20px;
+    color: var(--dark);
+    font-size: 1.3rem;
+}
+
+.back-btn {
+    background: var(--gray);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 20px;
+    transition: all 0.3s;
+}
+
+.back-btn:hover {
+    background: #7f8c8d;
+    transform: translateY(-3px);
+}
+
+.review-count {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--purple);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.page-title {
+    text-align: center;
+    margin: 30px 0;
+    color: var(--dark);
+    font-size: 2.2rem;
+    position: relative;
+}
+
+.page-title::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary), var(--purple));
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
