@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рейтинг преподавателей</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <h1>Рейтинг преподавателей</h1>
+            <button class="admin-btn" id="adminBtn">Вход для администратора</button>
+        </div>
+    </header>
+    
+    <div class="container">
+        <h2 class="page-title">Оцените своих преподавателей</h2>
+        
+        <div class="main-content">
+            <div class="card">
+                <h2>Оценить преподавателя</h2>
+                <form id="reviewForm">
+                    <div class="form-group">
+                        <label for="teacher">Преподаватель</label>
+                        <select id="teacher" required>
+                            <option value="">Выберите преподавателя</option>
+                            <option value="1">Иванов А.П. (Математика, Физика)</option>
+                            <option value="2">Петрова М.И. (Литература, Русский язык)</option>
+                            <option value="3">Сидоров В.С. (История, Обществознание)</option>
+                            <option value="4">Кузнецова О.Д. (Информатика, Программирование)</option>
+                        </select>
+                        <div id="teacherDisciplines" style="margin-top: 8px; font-size: 0.9rem; color: var(--gray); display: none;">
+                            Ведет дисциплины: <span id="disciplinesList"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="discipline">Дисциплина</label>
+                        <input type="text" id="discipline" placeholder="Введите название дисциплины" required>
+                    </div>
+                    
+                    <div class="rating-container">
+                        <div class="rating-item">
+                            <label>Объясняет материал</label>
+                            <div class="stars" id="clarityStars">
+                                <span class="star" data-value="1">☆</span>
+                                <span class="star" data-value="2">☆</span>
+                                <span class="star" data-value="3">☆</span>
+                                <span class="star" data-value="4">☆</span>
+                                <span class="star" data-value="5">☆</span>
+                            </div>
+                            <input type="hidden" id="clarityRating" value="0" required>
+                        </div>
+                        
+                        <div class="rating-item">
+                            <label>Справедливость</label>
+                            <div class="stars" id="fairnessStars">
+                                <span class="star" data-value="1">☆</span>
+                                <span class="star" data-value="2">☆</span>
+                                <span class="star" data-value="3">☆</span>
+                                <span class="star" data-value="4">☆</span>
+                                <span class="star" data-value="5">☆</span>
+                            </div>
+                            <input type="hidden" id="fairnessRating" value="0" required>
+                        </div>
+                        
+                        <div class="rating-item">
+                            <label>Интересно ведет</label>
+                            <div class="stars" id="engagementStars">
+                                <span class="star" data-value="1">☆</span>
+                                <span class="star" data-value="2">☆</span>
+                                <span class="star" data-value="3">☆</span>
+                                <span class="star" data-value="4">☆</span>
+                                <span class="star" data-value="5">☆</span>
+                            </div>
+                            <input type="hidden" id="engagementRating" value="0" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="comment">Комментарий (необязательно)</label>
+                        <textarea id="comment" rows="4" placeholder="Ваш отзыв..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Отправить отзыв</button>
+                </form>
+            </div>
+            
+            <div class="card">
+                <div class="filters">
+                    <div class="form-group">
+                        <label for="filterTeacher">Преподаватель</label>
+                        <select id="filterTeacher">
+                            <option value="">Все преподаватели</option>
+                            <option value="1">Иванов А.П.</option>
+                            <option value="2">Петрова М.И.</option>
+                            <option value="3">Сидоров В.С.</option>
+                            <option value="4">Кузнецова О.Д.</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="filterDiscipline">Дисциплина</label>
+                        <input type="text" id="filterDiscipline" placeholder="Фильтр по дисциплине">
+                    </div>
+                </div>
+                
+                <h2>Рейтинг преподавателей</h2>
+                <div id="teachersList">
+                    <!-- Преподаватели будут загружены через JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Панель администратора -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-content">
+            <div class="admin-header">
+                <h3 class="admin-title">Панель модерации отзывов</h3>
+                <button class="close-admin" id="closeAdmin">×</button>
+            </div>
+            
+            <div id="adminContent">
+                <!-- Контент будет загружен через JavaScript -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast сообщения -->
+    <div class="toast" id="toast"></div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
