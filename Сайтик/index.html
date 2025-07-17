@@ -10,6 +10,7 @@
     <header>
         <div class="container header-content">
             <h1>Рейтинг преподавателей</h1>
+            <button class="admin-btn" id="adminBtn">Вход для администратора</button>
         </div>
     </header>
     
@@ -29,6 +30,12 @@
                             <option value="3">Сидоров В.С. (История, Обществознание)</option>
                             <option value="4">Кузнецова О.Д. (Информатика, Программирование)</option>
                         </select>
+                        <div id="teacherDisciplines" style="margin-top: 8px; font-size: 0.9rem; color: var(--gray); display: none;">
+                            Ведет дисциплины: <span id="disciplinesList"></span>
+                        </div>
+                        <div class="time-limit-message" id="timeLimitMessage">
+                            Вы сможете отправить следующий отзыв для этого преподавателя через: <span id="timer">30:00</span>
+                        </div>
                     </div>
                     
                     <div class="form-group">
@@ -38,15 +45,39 @@
                     
                     <div class="rating-container">
                         <div class="rating-item">
-                            <label>Общая оценка</label>
-                            <div class="stars" id="overallStars">
+                            <label>Объясняет материал</label>
+                            <div class="stars" id="clarityStars">
                                 <span class="star" data-value="1">☆</span>
                                 <span class="star" data-value="2">☆</span>
                                 <span class="star" data-value="3">☆</span>
                                 <span class="star" data-value="4">☆</span>
                                 <span class="star" data-value="5">☆</span>
                             </div>
-                            <input type="hidden" id="overallRating" value="0" required>
+                            <input type="hidden" id="clarityRating" value="0" required>
+                        </div>
+                        
+                        <div class="rating-item">
+                            <label>Справедливость</label>
+                            <div class="stars" id="fairnessStars">
+                                <span class="star" data-value="1">☆</span>
+                                <span class="star" data-value="2">☆</span>
+                                <span class="star" data-value="3">☆</span>
+                                <span class="star" data-value="4">☆</span>
+                                <span class="star" data-value="5">☆</span>
+                            </div>
+                            <input type="hidden" id="fairnessRating" value="0" required>
+                        </div>
+                        
+                        <div class="rating-item">
+                            <label>Интересно ведет</label>
+                            <div class="stars" id="engagementStars">
+                                <span class="star" data-value="1">☆</span>
+                                <span class="star" data-value="2">☆</span>
+                                <span class="star" data-value="3">☆</span>
+                                <span class="star" data-value="4">☆</span>
+                                <span class="star" data-value="5">☆</span>
+                            </div>
+                            <input type="hidden" id="engagementRating" value="0" required>
                         </div>
                     </div>
                     
@@ -71,12 +102,31 @@
                             <option value="4">Кузнецова О.Д.</option>
                         </select>
                     </div>
+                    
+                    <div class="form-group">
+                        <label for="filterDiscipline">Дисциплина</label>
+                        <input type="text" id="filterDiscipline" placeholder="Фильтр по дисциплине">
+                    </div>
                 </div>
                 
                 <h2>Рейтинг преподавателей</h2>
                 <div id="teachersList">
-                    <!-- Преподаватели будут загружены через JavaScript -->
+                    <!-- Преподаватели в JavaScript -->
                 </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Панель администратора -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-content">
+            <div class="admin-header">
+                <h3 class="admin-title">Панель модерации отзывов</h3>
+                <button class="close-admin" id="closeAdmin">×</button>
+            </div>
+            
+            <div id="adminContent">
+                <!-- Контент в JavaScript -->
             </div>
         </div>
     </div>

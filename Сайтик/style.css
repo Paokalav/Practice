@@ -6,7 +6,10 @@
     --light: #ecf0f1;
     --gray: #95a5a6;
     --purple: #9b59b6;
-    --gold: #f1c40f;
+    --pink: #e289c0;
+    --green: #628f51;
+    --blue: #6aaec1;
+    --gold: #d4eb61;
 }
 
 * {
@@ -31,7 +34,7 @@ body {
 }
 
 header {
-    background: linear-gradient(135deg, var(--purple), var(--primary));
+    background: linear-gradient(135deg, var(--pink), var(--green));
     color: white;
     padding: 1.5rem 0;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -50,6 +53,24 @@ h1 {
     font-size: 1.8rem;
     font-weight: 700;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.admin-btn {
+    background-color: var(--gold);
+    color: var(--dark);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.admin-btn:hover {
+    background-color: var(--gold);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .main-content {
@@ -110,18 +131,28 @@ select, input, textarea {
 }
 
 select:focus, input:focus, textarea:focus {
-    border-color: var(--primary);
+    border-color: var(--pink);
     outline: none;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    box-shadow: 0 0 0 3px rgba(219, 52, 163, 0.2);
     background-color: white;
 }
 
 .rating-container {
-    justify-content: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .rating-item {
-    min-width: 200px;
+    text-align: center;
+    flex: 1;
+    min-width: 120px;
+    padding: 15px;
+    background: rgba(236, 240, 241, 0.5);
+    border-radius: 10px;
+    transition: all 0.3s;
 }
 
 .rating-item:hover {
@@ -155,7 +186,7 @@ select:focus, input:focus, textarea:focus {
 }
 
 .submit-btn {
-    background: linear-gradient(to right, var(--primary), var(--purple));
+    background: linear-gradient(to right, var(--pink), var(--green));
     color: white;
     border: none;
     padding: 15px 25px;
@@ -166,13 +197,13 @@ select:focus, input:focus, textarea:focus {
     cursor: pointer;
     transition: all 0.3s;
     letter-spacing: 0.5px;
-    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    box-shadow: 0 4px 15px rgba(110, 219, 52, 0.3);
 }
 
 .submit-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
-    background: linear-gradient(to right, #2980b9, #8e44ad);
+    box-shadow: 0 6px 20px rgba(240, 83, 167, 0.4);
+    background: linear-gradient(to right, var(--pink), var(--green));
 }
 
 .filters {
@@ -213,7 +244,7 @@ select:focus, input:focus, textarea:focus {
     left: 0;
     width: 5px;
     height: 100%;
-    background: linear-gradient(to bottom, var(--purple), var(--primary));
+    background: linear-gradient(to bottom, var(--pink), var(--green));
 }
 
 .teacher-header {
@@ -239,14 +270,20 @@ select:focus, input:focus, textarea:focus {
 .avg-rating {
     font-size: 1.8rem;
     font-weight: 800;
-    color: var(--purple);
-    background: rgba(155, 89, 182, 0.1);
+    color: var(--green);
+    background: rgba(131, 182, 89, 0.1);
     padding: 8px 20px;
     border-radius: 30px;
     min-width: 70px;
     text-align: center;
 }
 
+.rating-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
 
 .rating-detail {
     text-align: center;
@@ -275,13 +312,72 @@ select:focus, input:focus, textarea:focus {
     font-weight: 500;
 }
 
+.admin-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    display: none;
+    backdrop-filter: blur(5px);
+}
+
+.admin-content {
+    background: white;
+    width: 90%;
+    max-width: 900px;
+    max-height: 90vh;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+}
+
+.admin-header {
+    background: linear-gradient(to right, var(--blue), var(--pink));
+    color: white;
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.close-admin {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.close-admin:hover {
+    transform: scale(1.1);
+}
+
+.reviews-list {
+    padding: 25px;
+    overflow-y: auto;
+    flex-grow: 1;
+}
 
 .review-item {
     background: #f9f9f9;
     border-radius: 12px;
     padding: 20px;
     margin-bottom: 20px;
-    border-left: 5px solid var(--primary);
+    border-left: 5px solid var(--pink);
     transition: all 0.3s;
 }
 
@@ -305,24 +401,31 @@ select:focus, input:focus, textarea:focus {
 }
 
 .review-discipline {
-    color: var(--purple);
+    color: var(--pink);
     font-weight: 600;
     font-size: 0.95rem;
     margin-top: 5px;
+}
+
+.review-ratings {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
 }
 
 .review-rating {
     display: flex;
     align-items: center;
     gap: 5px;
-    background: rgba(52, 152, 219, 0.1);
+    background: rgba(83, 219, 52, 0.1);
     padding: 8px 15px;
     border-radius: 20px;
 }
 
 .review-rating-value {
     font-weight: 700;
-    color: var(--primary);
+    color: var(--green);
     font-size: 1.1rem;
 }
 
@@ -334,6 +437,60 @@ select:focus, input:focus, textarea:focus {
     border: 1px solid #eee;
     font-style: italic;
     line-height: 1.5;
+}
+
+.review-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+    flex: 1;
+    font-size: 1rem;
+}
+
+.btn-approve {
+    background: linear-gradient(to right, var(--secondary), #27ae60);
+    color: white;
+}
+
+.btn-approve:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+}
+
+.btn-reject {
+    background: linear-gradient(to right, var(--danger), #c0392b);
+    color: white;
+}
+
+.btn-reject:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+}
+
+.login-form {
+    padding: 40px;
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.login-form h2 {
+    margin-bottom: 30px;
+    color: var(--dark);
+    font-size: 1.8rem;
+}
+
+.login-form .form-group {
+    margin-bottom: 25px;
 }
 
 .toast {
@@ -408,7 +565,7 @@ select:focus, input:focus, textarea:focus {
     position: absolute;
     top: 20px;
     right: 20px;
-    background: var(--purple);
+    background: var(--pink);
     color: white;
     width: 30px;
     height: 30px;
@@ -433,7 +590,61 @@ select:focus, input:focus, textarea:focus {
     display: block;
     width: 80px;
     height: 4px;
-    background: linear-gradient(to right, var(--primary), var(--purple));
+    background: linear-gradient(to right, var(--pink), var(--green));
     margin: 15px auto 0;
     border-radius: 2px;
+}
+
+.time-limit-message {
+    background-color: #ffebee;
+    border-left: 4px solid #e74c3c;
+    padding: 12px 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    display: none;
+}
+
+.time-limit-message span {
+    font-weight: 700;
+    color: #e74c3c;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 25px 0;
+    gap: 15px;
+}
+
+.pagination-btn {
+    background: linear-gradient(to right, var(--blue), var(--pink));
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+    min-width: 120px;
+    text-align: center;
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: var(--gray);
+}
+
+.pagination-btn:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.page-info {
+    font-weight: 600;
+    color: var(--dark);
+    min-width: 150px;
+    text-align: center;
 }
